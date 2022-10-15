@@ -1,0 +1,35 @@
+#install kernel:
+curl -s https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc \
+    | sudo pacman-key --add -
+
+sudo pacman-key --finger 56C464BAAC421453
+sudo pacman-key --lsign-key 56C464BAAC421453
+
+sudo cp pacman.conf /etc/pacman.conf
+
+sudo pacman -Syu
+sudo pacman -S linux-surface linux-surface-headers iptsd
+sudo systemctl enable iptsd
+
+#wifi installation
+sudo pacman -S linux-firmware-marvell
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+#cpu firmware
+sudo pacman -S intel-ucode
+
+#touchscreen wacom
+#auto rotate
+#camera
+#hibernate
+#personal customisations:
+#   moz wayland env variable
+#   keyboard shortcuts (krunner, )
+#   darkmode
+#   powersettings
+
+extras:
+easily accessible tablet mode toggle
+touchscreen gestures
+touchpad gestures
